@@ -51,39 +51,72 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
 #include "main.h"
-#include <stdbool.h>
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-void push_button();
-bool button_status;
-int main(void)
-{
-  HAL_Init();
-  SystemClock_Config();
-  MX_GPIO_Init();
-  while (1)
-  {
-	  push_button();
-  }
-}
-void push_button()
-{
-	button_status=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
-	if(button_status==0)
-	{
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
-		//HAL_Delay(500);
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-		//HAL_Delay(500);
-	}
-	else
-	{
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	}
-}
-#endif
 
+#include <stdbool.h>
+
+void SystemClock_Config(void);
+
+
+static void MX_GPIO_Init(void);
+
+void push_button();
+
+bool button_status;
+
+int main(void)
+
+{
+
+  HAL_Init();
+  
+  SystemClock_Config();
+  
+  MX_GPIO_Init();
+  
+  while (1)
+  
+  {
+
+   push_button();
+  }
+  
+}
+
+
+void push_button()
+
+{
+
+ button_status=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+
+ if(button_status==0)
+
+ {
+
+  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+
+  //HAL_Delay(500);
+
+  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+
+  //HAL_Delay(500);
+
+ }
+
+ else
+
+ {
+
+  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+
+ }
+}
+
+
+#endif
+```
 
 ## Output  :
  ![image](https://github.com/vidhyasrikachapalayam/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119477817/353e46f1-7dd7-4116-9455-6aac52a071f7)
